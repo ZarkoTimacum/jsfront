@@ -1,0 +1,251 @@
+body {
+display: flex;
+text-align: left;
+justify-content: left;
+margin-top: 20px;
+background-image: url('https://mclaren.scene7.com/is/image/mclaren/McLarenArtura-16:crop-16x9?wid=1980&hei=1114');
+background-size: cover;
+}
+
+#pisi{
+  margin-top: 10px;
+  color: rgb(255, 85, 0);
+  text-align: center;
+}
+
+#container{  
+margin-left: 20px;
+margin-right: auto;
+text-align: center;   
+width: 260px;  
+height: 370px;  
+padding: 40px; 
+margin-top: -20px;
+}  
+
+#connectBtn{  
+font-family: 'Arial';
+margin-left: auto;
+margin-right: auto;
+font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+width: 230px; 
+height: 45px;
+border-radius: 8px;
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+font-size: 14px;
+}  
+
+#address {
+margin: 10px;
+margin-bottom: -20px;
+}
+
+#connectBtn:hover {
+background-color: #5a5a5a;
+color: rgb(255, 255, 255);
+border: 0px;
+border-radius: 8px;
+}
+
+#enabled{
+font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;     
+width: 100%;  
+height: 45px; 
+margin-top: 10px;
+border: 1px solid white ;
+border-radius: 8px;
+background-color: rgb(0, 0, 0);
+color: white;
+}
+
+#enabled:hover{
+background-color: #5a5a5a;
+color: rgb(255, 255, 255);
+border: 0px;
+border-radius: 8px;
+}
+
+#disabled{  
+font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;     
+width: 100%;  
+height: 45px; 
+margin-top: 10px;
+border: 1px solid white ;
+border-radius: 8px;
+background-color: rgb(196, 196, 196);
+color: white;
+}  
+
+#disabled:hover{
+background-color: #5a5a5a;
+color: rgb(255, 255, 255);
+border: 0px;
+border-radius: 8px;
+}
+
+#divcina {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+}
+
+#disconnectBtn{
+font-family: 'Arial';
+margin-left: auto;
+margin-right: auto;
+font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+width: 230px; 
+height: 45px;
+border-radius: 8px;
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+font-size: 14px;
+}
+
+#disconnectBtn:hover{
+background-color: #5a5a5a;
+color: rgb(255, 255, 255);
+border: 0px;
+border-radius: 8px;
+}
+
+#forma {
+text-align: left;
+}
+
+#imeauta { 
+padding: 10px;
+border-style:solid;
+border-radius: 4px;
+border-color: rgb(182, 182, 182);
+width: 100%;
+margin-bottom:1px;
+box-sizing: border-box;
+}
+
+#bojaauta { 
+padding: 10px;
+border-style:solid;
+border-radius: 4px;
+border-color: rgb(182, 182, 182);
+width: 100%;
+margin-bottom:1px;
+box-sizing: border-box;
+}
+
+#godinaauta { 
+padding: 10px;
+border-style:solid;
+border-radius: 4px;
+border-color: rgb(182, 182, 182);
+width: 100%;
+margin-bottom:1px;
+box-sizing: border-box;
+}
+
+#ime { 
+padding: 10px;
+border-style:solid;
+border-radius: 4px;
+border-color: rgb(182, 182, 182);
+width: 100%;
+margin-bottom:1px;
+box-sizing: border-box;
+}
+  
+#myCheck {
+height:40px;
+width: 40px;
+margin-top: 10px;
+margin-left:0px;
+}
+
+#has {
+margin-top: 10px;
+}
+  
+#log {
+font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+width: 230px; 
+height: 45px;
+border-radius: 8px;
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+font-size: 14px;
+}
+
+#dugme {
+margin-top: 15px;
+}
+
+#log:hover {
+background-color: #5a5a5a;
+color: rgb(255, 255, 255);
+border: 0px;
+border-radius: 8px;
+}
+
+#dole {
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 100px;
+}
+
+#p {
+margin-bottom: 50px;          
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+  
+#pnot {
+margin-bottom: 20px;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+  
+#err {
+color:red;
+padding: 10px;
+text-align: center;
+}
+
+#succ {
+font-family: Inter;
+color: #1C872D ;
+padding: 10px;
+text-align: center;
+}
+  
+#creating {
+margin-top: 10px;
+text-align: center;
+}
+
+#checkdiv {
+padding-top: 15px;
+}
