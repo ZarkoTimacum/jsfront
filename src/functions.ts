@@ -28,49 +28,48 @@ export function configureMainWagmi() {
 	});
 }
 
-window.onload= async function brcar () {
+window.onload= async function NumberOfCars () {
 	const data = await readContract({
 		address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
 		abi: ABI,
 		functionName: 'brojAuta',
 	  })
-	  
 	  console.log("Number of car test  " + data); 
 	
 	  document.getElementById("write").innerHTML="Total number of cars: " + data;
 	}
 
-	export async function createcar () {
+	export async function CreateCar () {
 	
 	try {
 	document.getElementById("creating").innerHTML="Creating...";
 	document.getElementById("enabled").style.backgroundColor= '#B7B7B7';
 	document.getElementById("enabled").disabled = true;
 	
-	let registered;
+	let Registered;
 
 	if (document.getElementById("myCheck").checked){
-			registered = true;
+			Registered = true;
 	}
 	else {
-			registered = false;
+			Registered = false;
 	}
-	console.log(registered);
+	console.log(Registered);
 
-	let name=document.getElementById("namecar").value;
-	console.log(name);
+	let Name=document.getElementById("NameOfCar").value;
+	console.log(Name);
 					
-	let color=document.getElementById("colorcar").value;
-	console.log(color);
+	let Color=document.getElementById("ColorOfCar").value;
+	console.log(Color);
 
-	let year=document.getElementById("yearcar").value;
-	console.log(year);
+	let Year=document.getElementById("YearOfCar").value;
+	console.log(Year);
 
 	const config  = await prepareWriteContract({
 		address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
 		abi: ABI,
 		functionName: 'createCar',
-		args:[color, name, year, registered],
+		args:[Color, Name, Year, Registered],
 		overrides: {
 		value: ethers.utils.parseEther('0.01'),
 				},
@@ -78,11 +77,11 @@ window.onload= async function brcar () {
 		const { hash } = await writeContract(config);
 		console.log(hash);
 		
-		const hashtransaction = await waitForTransaction({
+		const HashTransaction = await waitForTransaction({
 			hash
 		  })
 	
-		  if(hashtransaction) {
+		  if(HashTransaction) {
 		
 		document.getElementById("enabled").style.backgroundColor= '#000000';
 		document.getElementById("creating").innerHTML="Successfully created new car";
@@ -90,16 +89,15 @@ window.onload= async function brcar () {
 		document.getElementById("enabled").style.backgroundColor= '#000000';
 		document.getElementById("enabled").disabled = false;
 
-		const newcar = await readContract({
+		const NewCar = await readContract({
 			address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
 			abi: ABI,
 			functionName: 'brojAuta',
 		})
-		document.getElementById("write").innerHTML="Total number of cars is: " + newcar;
+		document.getElementById("write").innerHTML="Total number of cars is: " + NewCar;
 	}
 				} catch (error) {
-
-			document.getElementById("creating").innerHTML="Error creating new car";
+			document.getElementById("creating").innerHTML="Error creating new car!";
 			document.getElementById("creating").style.color = '#FF0000';
 			document.getElementById("enabled").style.color = '#FFFFFF';
 			document.getElementById("enabled").disabled = false;
@@ -113,8 +111,8 @@ export function setupConnect(element: HTMLButtonElement) {
 export function setupDisconnect(element: HTMLButtonElement) {
 	element.addEventListener('click', () => disconnect());
 }
-export function create(element: HTMLButtonElement) {
-	element.addEventListener('click', () => createcar());
+export function Create(element: HTMLButtonElement) {
+	element.addEventListener('click', () => CreateCar());
 }
 export async function connectWallet() {
 	try {

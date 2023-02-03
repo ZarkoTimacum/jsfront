@@ -7,7 +7,7 @@ import {
 	setupConnect,
 	watchAccountSetup,
 	setupDisconnect,
-	create,
+	Create
 } from './functions';
 
 // HTML part
@@ -19,14 +19,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
 <div id="container">
 <form id="form" onsubmit="return false">
 	 <div id="field">
-		   <label for="name">NAME:</label>
-		   <input id="namecar" type="text" maxlength="20" onchange="(this.value)"/><br>
+		   	<label for="Name">NAME:</label>
+		   	<input id="NameOfCar" type="text" maxlength="20" onchange="(this.value)"/><br>
 		  
-		   <label for="color">COLOR:</label>
-		   <input id="colorcar" type="text" maxlength="10" onchange="(this.value)"/><br>
+		   	<label for="Color">COLOR:</label>
+		   	<input id="ColorOfCar" type="text" maxlength="10" onchange="(this.value)"/><br>
 		  
-		   <label for="number">YEAR:</label>
-		   <input id="yearcar" type="number" min="1950" max="2024" maxlenght="4" onchange="(this.value)"/><br>
+		   	<label for="Number">YEAR:</label>
+		   	<input id="YearOfCar" type="number" min="1950" max="2024" onchange="(this.value)"/><br>
 	  </div>   
 			<div id="checkdiv">
 						REGISTERED: <br> <input type="checkbox"  id="myCheck"/>
@@ -35,7 +35,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
 			</div>
 				<div id="creating">
 				</div>
-	</form>
+		</form>
 	</div>
 	<p id="write">Total number of cars is: loading.... </p>
 </div> 
@@ -54,4 +54,4 @@ watchAccountSetup(
 );
 setupConnect(document.querySelector<HTMLButtonElement>('#connectBtn')!);
 setupDisconnect(document.querySelector<HTMLButtonElement>('#disconnectBtn')!);
-create(document.querySelector<HTMLButtonElement>('#enabled')!);
+Create(document.querySelector<HTMLButtonElement>('#enabled')!);
