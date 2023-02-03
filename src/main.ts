@@ -12,28 +12,24 @@ import {
 
 // HTML part
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
-
-<div>
+<div id="main">
 		<button id='connectBtn'>LOGIN</button>
 		<button id='disconnectBtn'>LOGOUT</button>
-	<div id="p">
 		<div id='address'></div>
-</div>
 <div id="container">
-<form id="forma" onsubmit="return false">
-	 <div id="polje">
-		   <label for="imes">NAME:</label>
-		   <input id="imeauta" type="text" value="" onchange="(this.value)"/><br>
+<form id="form" onsubmit="return false">
+	 <div id="field">
+		   <label for="name">NAME:</label>
+		   <input id="namecar" type="text" maxlength="20" onchange="(this.value)"/><br>
 		  
 		   <label for="color">COLOR:</label>
-		   <input id="bojaauta" type="text" value="" onchange="(this.value)"/><br>
+		   <input id="colorcar" type="text" maxlength="10" onchange="(this.value)"/><br>
 		  
 		   <label for="number">YEAR:</label>
-		   <input id="godinaauta" type="number" value="" onchange="(this.value)"/><br>
-	 </div>   
+		   <input id="yearcar" type="number" min="1950" max="2024" maxlenght="4" onchange="(this.value)"/><br>
+	  </div>   
 			<div id="checkdiv">
 						REGISTERED: <br> <input type="checkbox"  id="myCheck"/>
-						
 						<button id='enabled'>CREATE CAR</button> 
 						<button id='disabled'>CREATE CAR</button> 
 			</div>
@@ -41,12 +37,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
 				</div>
 	</form>
 	</div>
-	<p id="pisi">Total number of cars is: loading.... </p>
+	<p id="write">Total number of cars is: loading.... </p>
 </div> 
-  
+  </div>
 `;
 
-// JS part
+// JavaScript part
 configureMainWagmi();
 watchAccountSetup(
 	document.querySelector<HTMLButtonElement>('#connectBtn')!,

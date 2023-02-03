@@ -6,23 +6,20 @@ import {
 } from '@wagmi/core';
 import { connect } from '@wagmi/core';
 import { InjectedConnector } from '@wagmi/core/connectors/injected';
-import { alchemyProvider } from '@wagmi/core/providers/alchemy'
-import { goerli } from '@wagmi/core/chains'
-import { MetaMaskConnector } from '@wagmi/core/connectors/metaMask'
-import { prepareWriteContract } from '@wagmi/core'
-import { writeContract } from '@wagmi/core'
-import { ethers } from "ethers"
-import { readContract } from '@wagmi/core'
+import { alchemyProvider } from '@wagmi/core/providers/alchemy';
+import { goerli } from '@wagmi/core/chains';
+import { prepareWriteContract } from '@wagmi/core';
+import { writeContract } from '@wagmi/core';
+import { ethers } from "ethers";
+import { readContract } from '@wagmi/core';
+import { waitForTransaction } from '@wagmi/core';
+import ABI  from './abi.json';
 
-const connector = new MetaMaskConnector({
-  chains: [goerli],
-})
-
-// main wagmi configuration setup
+// main wagmi configuration setup.
 export function configureMainWagmi() {
 	const { provider, webSocketProvider } = configureChains(
 		[goerli],
-		[alchemyProvider({ apiKey: 'RGl6ALYLxiuktwSl7e0LbzuNwWM8rZPB' })],
+		[alchemyProvider({ apiKey: 'RGl6ALYLxiuktwSl7e0LbzuNwWM8rZPB' })], 
 	);
 	const client = createClient({
 		autoConnect: true,
@@ -33,82 +30,73 @@ export function configureMainWagmi() {
 
 window.onload= async function brcar () {
 	const data = await readContract({
-		address: '0xcF6eEe13aeeA52ECe57D2174b87c42FF70F0c153',
-		abi: [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"brojAuta","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"carowner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"cars","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"color","type":"string"},{"internalType":"uint256","name":"year","type":"uint256"},{"internalType":"bool","name":"registered","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_color","type":"string"},{"internalType":"string","name":"_name","type":"string"},{"internalType":"uint256","name":"_year","type":"uint256"},{"internalType":"bool","name":"reg","type":"bool"}],"name":"createCar","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"string","name":"_color","type":"string"}],"name":"menjajBoju","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"proveriAuto","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"registerCar","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}],
+		address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
+		abi: ABI,
 		functionName: 'brojAuta',
 	  })
+	  
+	  console.log("Number of car test  " + data); 
 	
-	  console.log("Broj auta test  " + data); 
-	
-	  document.getElementById("pisi").innerHTML="Total number of cars: " + data;
-	
+	  document.getElementById("write").innerHTML="Total number of cars: " + data;
 	}
 
 	export async function createcar () {
-
+	
 	try {
 	document.getElementById("creating").innerHTML="Creating...";
 	document.getElementById("enabled").style.backgroundColor= '#B7B7B7';
 	document.getElementById("enabled").disabled = true;
 	
-	let registracija;
+	let registered;
 
 	if (document.getElementById("myCheck").checked){
-			registracija = true;
+			registered = true;
 	}
-	
 	else {
-			registracija = false;
+			registered = false;
 	}
+	console.log(registered);
 
-	console.log(registracija);
-
-	let ime=document.getElementById("imeauta").value;
-	console.log(ime);
+	let name=document.getElementById("namecar").value;
+	console.log(name);
 					
-	let boja=document.getElementById("bojaauta").value;
-	console.log(boja);
+	let color=document.getElementById("colorcar").value;
+	console.log(color);
 
-	let godina=document.getElementById("godinaauta").value;
-	console.log(godina);
+	let year=document.getElementById("yearcar").value;
+	console.log(year);
 
 	const config  = await prepareWriteContract({
-		address: '0xcF6eEe13aeeA52ECe57D2174b87c42FF70F0c153',
-		abi: [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"brojAuta","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"carowner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"cars","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"color","type":"string"},{"internalType":"uint256","name":"year","type":"uint256"},{"internalType":"bool","name":"registered","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_color","type":"string"},{"internalType":"string","name":"_name","type":"string"},{"internalType":"uint256","name":"_year","type":"uint256"},{"internalType":"bool","name":"reg","type":"bool"}],"name":"createCar","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"string","name":"_color","type":"string"}],"name":"menjajBoju","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"proveriAuto","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"registerCar","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}],
+		address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
+		abi: ABI,
 		functionName: 'createCar',
-		args:[ime,boja,godina, registracija],
-	
+		args:[color, name, year, registered],
 		overrides: {
 		value: ethers.utils.parseEther('0.01'),
 				},
 	})
-		
-		const { hash, data, error, write } = await writeContract(config);
+		const { hash } = await writeContract(config);
 		console.log(hash);
 		
-		var frm = document.getElementById("forma");
-		frm.reset();
+		const hashtransaction = await waitForTransaction({
+			hash
+		  })
 	
+		  if(hashtransaction) {
+		
 		document.getElementById("enabled").style.backgroundColor= '#000000';
 		document.getElementById("creating").innerHTML="Successfully created new car";
 		document.getElementById("creating").style.color = '#1C872D';
 		document.getElementById("enabled").style.backgroundColor= '#000000';
 		document.getElementById("enabled").disabled = false;
 
-		const novauto = await readContract({
-			address: '0xcF6eEe13aeeA52ECe57D2174b87c42FF70F0c153',
-			abi: [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"brojAuta","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"carowner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"cars","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"color","type":"string"},{"internalType":"uint256","name":"year","type":"uint256"},{"internalType":"bool","name":"registered","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_color","type":"string"},{"internalType":"string","name":"_name","type":"string"},{"internalType":"uint256","name":"_year","type":"uint256"},{"internalType":"bool","name":"reg","type":"bool"}],"name":"createCar","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"string","name":"_color","type":"string"}],"name":"menjajBoju","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"proveriAuto","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"registerCar","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}],
+		const newcar = await readContract({
+			address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
+			abi: ABI,
 			functionName: 'brojAuta',
 		})
-		
-			console.log(1+parseInt(novauto));
-		
-			let noviiznos = parseInt(novauto)+1;
-		
-			console.log("Novi broj auta test: " + noviiznos);
-		
-			document.getElementById("pisi").innerHTML="Total number of cars: " + noviiznos;
-
+		document.getElementById("write").innerHTML="Total number of cars is: " + newcar;
+	}
 				} catch (error) {
 
 			document.getElementById("creating").innerHTML="Error creating new car";
@@ -116,22 +104,18 @@ window.onload= async function brcar () {
 			document.getElementById("enabled").style.color = '#FFFFFF';
 			document.getElementById("enabled").disabled = false;
 			document.getElementById("enabled").style.backgroundColor= '#000000';
-		
 				}
-		}
+			}
 		
 export function setupConnect(element: HTMLButtonElement) {
 	element.addEventListener('click', () => connectWallet());
 }
-
 export function setupDisconnect(element: HTMLButtonElement) {
 	element.addEventListener('click', () => disconnect());
 }
-
 export function create(element: HTMLButtonElement) {
 	element.addEventListener('click', () => createcar());
 }
-
 export async function connectWallet() {
 	try {
 		const result = await connect({
@@ -143,15 +127,13 @@ export async function connectWallet() {
 		console.log(error);
 	}
 }
-
 export function watchAccountSetup(
 	connectElement: HTMLButtonElement,
 	disconnectElement: HTMLButtonElement,
 	addressElement: HTMLDivElement,
 	enabledcreate: HTMLButtonElement,
 	disabledcreate: HTMLButtonElement,
-	createElement:HTMLInputElement
-	
+	createElement: HTMLInputElement
 ) {
 	const unwatch = watchAccount(
 		({ address, isConnected }) => {
@@ -169,7 +151,7 @@ export function watchAccountSetup(
 				enabledcreate.style.display = 'none';
 				disabledcreate.style.display = 'block';
 			}
-			addressElement.innerHTML = `${address ? '<h4>Your public address is:<br><h4>' + address : '<h4>Connect your wallet first.<h4>'}`;
+			addressElement.innerHTML = `${address ? '<h4>Your public address is: <br>' + address : '<h4>Connect your wallet first.<h4>'}`;
 		}
 	);
 }
