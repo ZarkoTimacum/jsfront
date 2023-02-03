@@ -46,15 +46,15 @@ window.onload= async function numberCars () {
 	document.getElementById("enabled").style.backgroundColor= '#B7B7B7';
 	document.getElementById("enabled").disabled = true;
 	
-	let Registered;
+	let registered;
 
 	if (document.getElementById("myCheck").checked){
-			Registered = true;
+			registered = true;
 	}
 	else {
-			Registered = false;
+			registered = false;
 	}
-	console.log(Registered);
+	console.log(registered);
 
 	let Name=document.getElementById("nameCar").value;
 	console.log(Name);
@@ -69,7 +69,7 @@ window.onload= async function numberCars () {
 		address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
 		abi: ABI,
 		functionName: 'createCar',
-		args:[Color, Name, Year, Registered],
+		args:[Color, Name, Year, registered],
 		overrides: {
 		value: ethers.utils.parseEther('0.01'),
 				},
