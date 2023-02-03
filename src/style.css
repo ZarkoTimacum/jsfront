@@ -134,7 +134,7 @@ body {
   text-align: left;
   }
   
-  #NameOfCar { 
+  #nameOfCar { 
   padding: 10px;
   border-style:solid;
   border-radius: 4px;
@@ -145,7 +145,7 @@ body {
   color: rgb(255, 85, 0);
   }
   
-  #ColorOfCar { 
+  #colorOfCar { 
   padding: 10px;
   border-style:solid;
   border-radius: 4px;
@@ -156,7 +156,7 @@ body {
   color: rgb(255, 85, 0);
   }
   
-  #YearOfCar { 
+  #yearOfCar { 
   padding: 10px;
   border-style:solid;
   border-radius: 4px;
