@@ -28,7 +28,7 @@ export function configureMainWagmi() {
 	});
 }
 
-window.onload= async function NumberOfCars () {
+window.onload= async function numberCars () {
 	const data = await readContract({
 		address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
 		abi: ABI,
@@ -39,7 +39,7 @@ window.onload= async function NumberOfCars () {
 	  document.getElementById("write").innerHTML="Total number of cars: " + data;
 	}
 
-	export async function CreateCar () {
+	export async function createCar () {
 	
 	try {
 	document.getElementById("creating").innerHTML="Creating...";
@@ -56,13 +56,13 @@ window.onload= async function NumberOfCars () {
 	}
 	console.log(Registered);
 
-	let Name=document.getElementById("NameOfCar").value;
+	let Name=document.getElementById("nameCar").value;
 	console.log(Name);
 					
-	let Color=document.getElementById("ColorOfCar").value;
+	let Color=document.getElementById("colorCar").value;
 	console.log(Color);
 
-	let Year=document.getElementById("YearOfCar").value;
+	let Year=document.getElementById("yearCar").value;
 	console.log(Year);
 
 	const config  = await prepareWriteContract({
@@ -77,11 +77,11 @@ window.onload= async function NumberOfCars () {
 		const { hash } = await writeContract(config);
 		console.log(hash);
 		
-		const HashTransaction = await waitForTransaction({
+		const hashTransaction = await waitForTransaction({
 			hash
 		  })
 	
-		  if(HashTransaction) {
+		  if(hashTransaction) {
 		
 		document.getElementById("enabled").style.backgroundColor= '#000000';
 		document.getElementById("creating").innerHTML="Successfully created new car";
@@ -89,12 +89,12 @@ window.onload= async function NumberOfCars () {
 		document.getElementById("enabled").style.backgroundColor= '#000000';
 		document.getElementById("enabled").disabled = false;
 
-		const NewCar = await readContract({
+		const newCar = await readContract({
 			address: '0x7B47Cc733F49A7aF3fF4885579FbAa302E8d84ca',
 			abi: ABI,
 			functionName: 'brojAuta',
 		})
-		document.getElementById("write").innerHTML="Total number of cars is: " + NewCar;
+		document.getElementById("write").innerHTML="Total number of cars is: " + newCar;
 	}
 				} catch (error) {
 			document.getElementById("creating").innerHTML="Error creating new car!";
@@ -112,7 +112,7 @@ export function setupDisconnect(element: HTMLButtonElement) {
 	element.addEventListener('click', () => disconnect());
 }
 export function Create(element: HTMLButtonElement) {
-	element.addEventListener('click', () => CreateCar());
+	element.addEventListener('click', () => createCar());
 }
 export async function connectWallet() {
 	try {

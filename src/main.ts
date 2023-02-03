@@ -20,13 +20,13 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* html */ `
 <form id="form" onsubmit="return false">
 	 <div id="field">
 		   	<label for="Name">NAME:</label>
-		   	<input id="NameOfCar" type="text" maxlength="20" onchange="(this.value)"/><br>
+		   	<input id="nameCar" type="text" maxlength="20" onchange="(this.value)"/><br>
 		  
 		   	<label for="Color">COLOR:</label>
-		   	<input id="ColorOfCar" type="text" maxlength="10" onchange="(this.value)"/><br>
+		   	<input id="colorCar" type="text" maxlength="10" onchange="(this.value)"/><br>
 		  
 		   	<label for="Number">YEAR:</label>
-		   	<input id="YearOfCar" type="number" min="1950" max="2024" onchange="(this.value)"/><br>
+		   	<input id="yearCar" type="number" min="1950" max="2024" onchange="(this.value)"/><br>
 	  </div>   
 			<div id="checkdiv">
 						REGISTERED: <br> <input type="checkbox"  id="myCheck"/>
